@@ -29,7 +29,6 @@ export function SeachInput({ onSearch }: SearchInputProps) {
                 onSubmit={onSubmit}
                 isVanish={false}
             />
-            {/*{value && value != "" && value.length > 2 && <InputResult />}*/}
         </div>
     );
 }

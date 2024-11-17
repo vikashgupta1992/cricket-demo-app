@@ -1,86 +1,103 @@
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import {
-    IconArrowWaveRightUp,
-    IconBoxAlignRightFilled,
-    IconBoxAlignTopLeft,
-    IconClipboardCopy,
-    IconFileBroken,
-    IconSignature,
-    IconTableColumn,
-} from "@tabler/icons-react";
 
-export function PlayerStatics() {
+export function PlayerStatics({ data }: any) {
     return (
         <BentoGrid className={`max-w-4xl mx-0 sm:mx-2 `}>
             {items.map((item, i) => (
                 <BentoGridItem
                     key={i}
                     title={item.title}
-                    description={item.description}
-                    header={item.header}
-                    icon={item.icon}
+                    header={item.header(data)}
                 />
             ))}
         </BentoGrid>
     );
 }
-const Skeleton = () => (
-    <div className="flex flex-1 w-full h-full min-h-[4rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
+const Skeleton = ({ imgName, data }: any) => (
+    <div className={`flex flex-1 w-full h-full min-h-[4rem] rounded-xl bg-gradient-to-br from-neutral-200 
+    dark:from-neutral-900 dark:to-neutral-800 to-neutral-100`}>
+        {imgName ? <img src={imgName} alt="skeleton" className="w-1/2 h-full rounded-l-xl"/> : <div className={'w-1/2 h-full '}></div>}
+        <div className="w-1/2 h-full rounded-l-xl flex text-[36px] font-bold justify-center flex-col">
+            <div className=" right-0 top-[1px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4
+                from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)]">
+                <span className="">{data}</span>
+            </div>
+        </div>
+
+    </div>
 );
+
 const items = [
     {
-        title: "The Dawn of Innovation",
-        description: "Explore the birth of groundbreaking ideas and inventions.",
-        header: <Skeleton />,
-        icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+        title: "Player Speciality",
+        keys: "speciality",
+        header: (record: any) => {
+            const item = record && record['speciality'] && record['speciality'] != "" ? record['speciality'] : "";
+            return <Skeleton data={item}/>
+        }
     },
     {
-        title: "The Digital Revolution",
-        description: "Dive into the transformative power of technology.",
-        header: <Skeleton />,
-        icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+        title: "Play Cricket",
+        keys: "play_cricket",
+        header: (record: any) => {
+            const item = record && record['play_cricket'] && record['play_cricket'] != "" ? record['play_cricket'] : "";
+            return <Skeleton data={item} imgName={`./cricket-icons/play-match.png`}/>
+        }
     },
     {
-        title: "The Art of Design",
-        description: "Discover the beauty of thoughtful and functional design.",
-        header: <Skeleton />,
-        icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
+        title: "Total Runs",
+        keys: "total_runs",
+        header: (record: any) => {
+            const item = record && record['total_runs'] && record['total_runs'] != "" ? record['total_runs'] : 0;
+            return <Skeleton data={item} imgName={`./cricket-icons/cricket-player.png`}/>
+        }
     },
     {
-        title: "The Power of Communication",
-        description:
-            "Understand the impact of effective communication in our lives.",
-        header: <Skeleton />,
-        icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+        title: "Batting Average",
+        keys: "batting_average",
+        header: (record: any) => {
+            const item = record && record['batting_average'] && record['batting_average'] != "" ? record['batting_average'] : 0;
+            return <Skeleton data={item} imgName={`./cricket-icons/50.png`}/>
+        }
     },
     {
-        title: "The Pursuit of Knowledge",
-        description: "Join the quest for understanding and enlightenment.",
-        header: <Skeleton />,
-        icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
+        title: "Wicket Taken",
+        keys: "wicket_taken",
+        header: (record: any) => {
+            const item = record && record['wicket_taken'] && record['wicket_taken'] != "" ? record['wicket_taken'] : 0;
+            return <Skeleton data={item} imgName={`./cricket-icons/wicket.png`}/>
+        }
     },
     {
-        title: "The Joy of Creation",
-        description: "Experience the thrill of bringing ideas to life.",
-        header: <Skeleton />,
-        icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
+        title: "Bowling Average",
+        keys: "bowling_average",
+        header: (record: any) => {
+            const item = record && record['bowling_average'] && record['bowling_average'] != "" ? record['bowling_average'] : 0;
+            return <Skeleton data={item} imgName={`./cricket-icons/calendar.png`}/>
+        }
     },
     {
-        title: "The Spirit of Adventure",
-        description: "Embark on exciting journeys and thrilling discoveries.",
-        header: <Skeleton />,
-        icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
+        title: "Total Catches",
+        keys: "total_catches",
+        header: (record: any) => {
+            const item = record && record['total_catches'] && record['total_catches'] != "" ? record['total_catches'] : 0;
+            return <Skeleton data={item} imgName={`./cricket-icons/catching.png`}/>
+        }
     },
     {
-        title: "The Spirit of Adventure",
-        description: "Embark on exciting journeys and thrilling discoveries.",
-        header: <Skeleton />,
-        icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
+        title: "Total Stumps",
+        keys: "total_stump",
+        header: (record: any) => {
+            const item = record && record['total_stump'] && record['total_stump'] != "" ? record['total_stump'] : 0;
+            return <Skeleton data={item} imgName={`./cricket-icons/keeping.png`}/>
+        }
     },
     {
-        title: "The Spirit of Adventure",
-        description: "Embark on exciting journeys and thrilling discoveries.",
-        header: <Skeleton />,
-        icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
+        title: "Total Run Out",
+        keys: "total_run_out",
+        header: (record: any) => {
+            const item = record && record['total_run_out'] && record['total_run_out'] != "" ? record['total_run_out'] : 0;
+            return <Skeleton data={item} imgName={`./cricket-icons/running.png`}/>
+        }
     },
 ];

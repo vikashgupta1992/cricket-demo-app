@@ -3,20 +3,17 @@
   text-align: center;
 }
 
-/*.app-container {*/
-/*   width: 95vw;*/
-/*   margin: 0 auto;*/
-/*  min-height: 100vh;*/
-/*}*/
+.container {
+  min-height: 100vh;
+}
 
 .app-container {
-  width: 95vw;
   margin: 0 auto;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /*justify-content: center;*/
+  min-height: 90vh;
 }
 
 .app-container.top {
@@ -30,7 +27,6 @@ body {
 
 header {
   width: 100%;
-
 }
 
 header > .header-content {
