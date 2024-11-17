@@ -1,0 +1,46 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*.app-container {*/
+/*   width: 95vw;*/
+/*   margin: 0 auto;*/
+/*  min-height: 100vh;*/
+/*}*/
+
+.app-container {
+  width: 95vw;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container.top {
+  justify-content: flex-start;
+  padding-top: 2rem;
+}
+
+body {
+  display: block;
+}
+
+header {
+  width: 100%;
+
+}
+
+header > .header-content {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+}
+
+.company-icon {
+  width: 48px;
+  height: 48px;
+}
